@@ -33,7 +33,7 @@ export class Login extends Component {
                                 <Button type="primary" htmlType="submit" className="login-form-button">
                                     Log in
                                 </Button>
-                                <a href='../Components/Main' style={{marginLeft: '10px'}}>register now!</a>
+                                <a href='register' style={{marginLeft: '10px'}}>register now!</a>
                             </Form.Item>
                         </Form>
                     </div>
