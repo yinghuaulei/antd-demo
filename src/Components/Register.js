@@ -24,13 +24,14 @@ const tailFormItemLayout = {
 
 let loading = false;
 
-const Register : React.FC = () => {
+const Register: React.FC = () => {
     const [loadings, setLoadings] = useState(false);
-
     const navigate = useNavigate();
-
     const onFinish = (self, values) => {
-        setLoadings()
+        setLoadings(() => {
+            return true
+        })
+
         axios.post("api/User/register", JSON.stringify(values), {
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +41,9 @@ const Register : React.FC = () => {
                 title: '注册成功！'
             })
             navigate("/login");
-        }).finally(() => loading = false).catch(e => {
+        }).finally(() => setLoadings(() => {
+            return false
+        })).catch(e => {
             Modal.error({
                 title: e.message, content: JSON.stringify(e.response.data)
             })
